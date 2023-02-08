@@ -1,4 +1,4 @@
-"""A collection of all commands that Adele can use to interact with the game. 	"""
+"""A collection of all commands that Dawn can use to interact with the game. 	"""
 
 from src.common import config, settings, utils
 import time
@@ -102,7 +102,7 @@ class Adjust(Command):
             toggle = not toggle
 
 class Buff(Command):
-    """Uses each of Adele's buffs once."""
+    """Uses each of Dawn's buffs once."""
 
     def __init__(self):
         super().__init__(locals())
@@ -175,7 +175,7 @@ class COSMOS(Command):
         press(Key.COSMOS, 1, up_time=0.15)
 
 class rift(Command):
-    """Uses 'COSMOS' once."""
+    """Uses 'Rift' once."""
 
     def main(self):
         press(Key.RIFT, 1, up_time=0.15)        
