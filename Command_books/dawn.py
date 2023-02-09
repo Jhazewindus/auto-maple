@@ -18,6 +18,7 @@ class Key:
     CYGNUS_KNIGHTS_WILL = 'f'
     GLORY_OF_THE_GUARDIANS = 'h'
     WEAPON_AURA = 'g'
+    COSMIC_FORGE = 'd'
 
     # Buffs Toggle
     SOUL_ELEMENT = 'l'
@@ -107,14 +108,19 @@ class Buff(Command):
     def __init__(self):
         super().__init__(locals())
         self.buff_time = 0
+        self.forge_time = 0
 
     def main(self):
         buffs = [Key.TRUE_SIGHT, Key.CYGNUS_KNIGHTS_WILL, Key.GLORY_OF_THE_GUARDIANS, Key.WEAPON_AURA]
         now = time.time()
+        if self.forge_time == 0 or now - self.forge_time > 180:
+            press(Key.COSMIC_FORGE, 2)
+            self.forge_time = now
         if self.buff_time == 0 or now - self.buff_time > settings.buff_cooldown:
             for key in buffs:
                 press(key, 3, up_time=0.3)
             self.buff_time = now
+
 		
 
 class FlashJump(Command):
